@@ -14,11 +14,8 @@ public class Programa {
 		 */
 		
 		String caminho = "/home/oberon/arquivo.txt";
-		FileReader fr = null;
-		BufferedReader br = null;
-		try {
-			fr = new FileReader(caminho);
-			br = new BufferedReader(fr);
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(caminho))) {
 			
 			//Readline tem o objetivo de ler uma linha do arquivo
 			String linha =br.readLine(); 
@@ -32,17 +29,6 @@ public class Programa {
 		} catch (IOException e) {
 			System.out.println("Erro: " + e.getMessage());
 			
-		}finally {
-			try {
-				if(br != null) {
-					br.close();
-				}
-				if(fr != null) {
-					fr.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }
